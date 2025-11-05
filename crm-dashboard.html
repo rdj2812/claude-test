@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .metric-card h3 {
+            font-size: 0.875rem;
+            color: #6c757d;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+
+        .metric-change {
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .metric-change.positive {
+            color: #28a745;
+        }
+
+        .metric-change.negative {
+            color: #dc3545;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 0.75rem;
+            background-color: #f8f9fa;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: #6c757d;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #dee2e6;
+            font-size: 0.875rem;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-inactive {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .activity-list {
+            list-style: none;
+        }
+
+        .activity-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid #dee2e6;
+        }
+
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+
+        .activity-time {
+            font-size: 0.75rem;
+            color: #6c757d;
+            display: block;
+            margin-top: 0.25rem;
+        }
+
+        .chart-container {
+            margin-top: 1rem;
+            height: 200px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            border-bottom: 2px solid #dee2e6;
+            padding: 1rem 0;
+        }
+
+        .bar {
+            width: 60px;
+            background: linear-gradient(to top, #3498db, #5dade2);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .bar:hover {
+            opacity: 0.8;
+        }
+
+        .bar-label {
+            text-align: center;
+            font-size: 0.75rem;
+            margin-top: 0.5rem;
+            color: #6c757d;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            width: 100%;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        @media (max-width: 968px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>CRM Dashboard</h1>
+    </header>
+
+    <div class="container">
+        <!-- Key Metrics -->
+        <div class="metrics">
+            <div class="metric-card">
+                <h3>Total Customers</h3>
+                <div class="metric-value">1,234</div>
+                <div class="metric-change positive">+12% from last month</div>
+            </div>
+            <div class="metric-card">
+                <h3>Active Deals</h3>
+                <div class="metric-value">87</div>
+                <div class="metric-change positive">+5% from last month</div>
+            </div>
+            <div class="metric-card">
+                <h3>Revenue (MTD)</h3>
+                <div class="metric-value">$245K</div>
+                <div class="metric-change positive">+18% from last month</div>
+            </div>
+            <div class="metric-card">
+                <h3>Conversion Rate</h3>
+                <div class="metric-value">24.5%</div>
+                <div class="metric-change negative">-2% from last month</div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Customer List -->
+            <div class="card">
+                <h2>Recent Customers</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                            <th>Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John Smith</td>
+                            <td>john.smith@example.com</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>$12,500</td>
+                        </tr>
+                        <tr>
+                            <td>Sarah Johnson</td>
+                            <td>sarah.j@example.com</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>$8,900</td>
+                        </tr>
+                        <tr>
+                            <td>Mike Davis</td>
+                            <td>mike.davis@example.com</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>$15,200</td>
+                        </tr>
+                        <tr>
+                            <td>Emily Wilson</td>
+                            <td>emily.w@example.com</td>
+                            <td><span class="status-badge status-active">Active</span></td>
+                            <td>$6,750</td>
+                        </tr>
+                        <tr>
+                            <td>Robert Brown</td>
+                            <td>r.brown@example.com</td>
+                            <td><span class="status-badge status-inactive">Inactive</span></td>
+                            <td>$3,200</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="card">
+                <h2>Recent Activity</h2>
+                <ul class="activity-list">
+                    <li class="activity-item">
+                        <strong>New customer added</strong>
+                        <span class="activity-time">2 hours ago</span>
+                    </li>
+                    <li class="activity-item">
+                        <strong>Deal closed: $15,000</strong>
+                        <span class="activity-time">4 hours ago</span>
+                    </li>
+                    <li class="activity-item">
+                        <strong>Meeting scheduled</strong>
+                        <span class="activity-time">5 hours ago</span>
+                    </li>
+                    <li class="activity-item">
+                        <strong>Email campaign sent</strong>
+                        <span class="activity-time">1 day ago</span>
+                    </li>
+                    <li class="activity-item">
+                        <strong>Quote sent to client</strong>
+                        <span class="activity-time">1 day ago</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Sales Chart -->
+        <div class="card">
+            <h2>Monthly Sales Overview</h2>
+            <div class="chart-container">
+                <div>
+                    <div class="bar" style="height: 120px;">
+                        <div class="bar-value">$45K</div>
+                    </div>
+                    <div class="bar-label">Jan</div>
+                </div>
+                <div>
+                    <div class="bar" style="height: 140px;">
+                        <div class="bar-value">$52K</div>
+                    </div>
+                    <div class="bar-label">Feb</div>
+                </div>
+                <div>
+                    <div class="bar" style="height: 100px;">
+                        <div class="bar-value">$38K</div>
+                    </div>
+                    <div class="bar-label">Mar</div>
+                </div>
+                <div>
+                    <div class="bar" style="height: 160px;">
+                        <div class="bar-value">$61K</div>
+                    </div>
+                    <div class="bar-label">Apr</div>
+                </div>
+                <div>
+                    <div class="bar" style="height: 180px;">
+                        <div class="bar-value">$72K</div>
+                    </div>
+                    <div class="bar-label">May</div>
+                </div>
+                <div>
+                    <div class="bar" style="height: 150px;">
+                        <div class="bar-value">$58K</div>
+                    </div>
+                    <div class="bar-label">Jun</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some simple interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate metric cards on load
+            const metricCards = document.querySelectorAll('.metric-card');
+            metricCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    card.style.transition = 'all 0.5s ease';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 50);
+                }, index * 100);
+            });
+
+            // Add click handler to table rows
+            const tableRows = document.querySelectorAll('tbody tr');
+            tableRows.forEach(row => {
+                row.style.cursor = 'pointer';
+                row.addEventListener('click', function() {
+                    const name = this.cells[0].textContent;
+                    alert('Customer details for: ' + name);
+                });
+            });
+
+            // Simulate real-time updates (optional)
+            setInterval(() => {
+                const activeDeals = document.querySelector('.metric-value');
+                if (activeDeals) {
+                    const currentValue = parseInt(activeDeals.textContent.replace(',', ''));
+                    // Small random fluctuation for demo purposes
+                    const change = Math.random() > 0.5 ? 1 : -1;
+                    // activeDeals.textContent = (currentValue + change).toLocaleString();
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
