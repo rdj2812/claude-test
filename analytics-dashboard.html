@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        .header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1.5rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .header p {
+            margin-top: 0.5rem;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            border-left: 4px solid #3498db;
+            padding-left: 0.75rem;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .metric-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .metric-card:nth-child(1) { animation-delay: 0.1s; }
+        .metric-card:nth-child(2) { animation-delay: 0.2s; }
+        .metric-card:nth-child(3) { animation-delay: 0.3s; }
+        .metric-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-change {
+            font-size: 0.85rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        .metric-change.positive {
+            background-color: #d4edda;
+            color: #28a745;
+        }
+
+        .metric-change.negative {
+            background-color: #f8d7da;
+            color: #dc3545;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 0.75rem;
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #555;
+            font-size: 0.9rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        td {
+            padding: 0.75rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr {
+            transition: background-color 0.2s;
+        }
+
+        tbody tr:hover {
+            background-color: #f8f9fa;
+            cursor: pointer;
+        }
+
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-completed {
+            background-color: #d4edda;
+            color: #28a745;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-failed {
+            background-color: #f8d7da;
+            color: #dc3545;
+        }
+
+        .status-active {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .status-cancelled {
+            background-color: #e2e3e5;
+            color: #6c757d;
+        }
+
+        .chart-container {
+            margin-top: 1rem;
+            padding: 1rem 0;
+        }
+
+        .chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 200px;
+            border-bottom: 2px solid #e9ecef;
+            padding: 0 1rem;
+        }
+
+        .bar {
+            flex: 1;
+            margin: 0 0.5rem;
+            background: linear-gradient(to top, #3498db, #5dade2);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            transition: all 0.3s ease;
+            min-width: 40px;
+        }
+
+        .bar:hover {
+            background: linear-gradient(to top, #2980b9, #3498db);
+            transform: translateY(-5px);
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .bar-label {
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .chart-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .list-item {
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            transition: background-color 0.2s;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .list-item-title {
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 0.25rem;
+        }
+
+        .list-item-meta {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        @media (max-width: 968px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .metric-value {
+                font-size: 1.5rem;
+            }
+
+            .chart {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Analytics Dashboard</h1>
+        <p>Real-time insights into payments, engagements, subscriptions, and deals</p>
+    </div>
+
+    <div class="container">
+        <!-- Payments Section -->
+        <div class="section">
+            <h2 class="section-title">💳 Payments</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Total Revenue</div>
+                    <div class="metric-value">$284,550</div>
+                    <span class="metric-change positive">↑ 12.5% from last month</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Transactions</div>
+                    <div class="metric-value">1,432</div>
+                    <span class="metric-change positive">↑ 8.3% from last month</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Average Transaction</div>
+                    <div class="metric-value">$198.71</div>
+                    <span class="metric-change positive">↑ 3.8% from last month</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Failed Payments</div>
+                    <div class="metric-value">23</div>
+                    <span class="metric-change negative">↑ 2 from last month</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Recent Transactions</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Transaction ID</th>
+                            <th>Customer</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr onclick="showTransactionDetails('TXN-4521')">
+                            <td>#TXN-4521</td>
+                            <td>Acme Corp</td>
+                            <td>$2,450.00</td>
+                            <td><span class="status-badge status-completed">Completed</span></td>
+                            <td>2025-11-07</td>
+                        </tr>
+                        <tr onclick="showTransactionDetails('TXN-4520')">
+                            <td>#TXN-4520</td>
+                            <td>TechStart Inc</td>
+                            <td>$890.50</td>
+                            <td><span class="status-badge status-completed">Completed</span></td>
+                            <td>2025-11-06</td>
+                        </tr>
+                        <tr onclick="showTransactionDetails('TXN-4519')">
+                            <td>#TXN-4519</td>
+                            <td>Global Solutions</td>
+                            <td>$1,200.00</td>
+                            <td><span class="status-badge status-pending">Pending</span></td>
+                            <td>2025-11-06</td>
+                        </tr>
+                        <tr onclick="showTransactionDetails('TXN-4518')">
+                            <td>#TXN-4518</td>
+                            <td>InnovateCo</td>
+                            <td>$450.25</td>
+                            <td><span class="status-badge status-failed">Failed</span></td>
+                            <td>2025-11-05</td>
+                        </tr>
+                        <tr onclick="showTransactionDetails('TXN-4517')">
+                            <td>#TXN-4517</td>
+                            <td>Digital Dynamics</td>
+                            <td>$3,100.00</td>
+                            <td><span class="status-badge status-completed">Completed</span></td>
+                            <td>2025-11-05</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Monthly Revenue Trend</h3>
+                <div class="chart-container">
+                    <div class="chart-wrapper">
+                        <div class="chart">
+                            <div class="bar" style="height: 65%;">
+                                <span class="bar-value">$185K</span>
+                            </div>
+                            <div class="bar" style="height: 75%;">
+                                <span class="bar-value">$212K</span>
+                            </div>
+                            <div class="bar" style="height: 60%;">
+                                <span class="bar-value">$170K</span>
+                            </div>
+                            <div class="bar" style="height: 85%;">
+                                <span class="bar-value">$241K</span>
+                            </div>
+                            <div class="bar" style="height: 90%;">
+                                <span class="bar-value">$255K</span>
+                            </div>
+                            <div class="bar" style="height: 100%;">
+                                <span class="bar-value">$285K</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-around; padding: 0 1rem;">
+                            <div class="bar-label">Jun</div>
+                            <div class="bar-label">Jul</div>
+                            <div class="bar-label">Aug</div>
+                            <div class="bar-label">Sep</div>
+                            <div class="bar-label">Oct</div>
+                            <div class="bar-label">Nov</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Engagements Section -->
+        <div class="section">
+            <h2 class="section-title">📊 Engagements</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Total Engagements</div>
+                    <div class="metric-value">12,845</div>
+                    <span class="metric-change positive">↑ 18.2% from last month</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Active Users</div>
+                    <div class="metric-value">3,421</div>
+                    <span class="metric-change positive">↑ 15.7% from last month</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Avg. Session Duration</div>
+                    <div class="metric-value">8m 32s</div>
+                    <span class="metric-change positive">↑ 1m 12s from last month</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Bounce Rate</div>
+                    <div class="metric-value">32.4%</div>
+                    <span class="metric-change negative">↑ 2.1% from last month</span>
+                </div>
+            </div>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <h3 class="card-title">Top Engagement Sources</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Source</th>
+                                <th>Users</th>
+                                <th>Sessions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Organic Search</td>
+                                <td>1,542</td>
+                                <td>4,821</td>
+                            </tr>
+                            <tr>
+                                <td>Direct</td>
+                                <td>892</td>
+                                <td>2,340</td>
+                            </tr>
+                            <tr>
+                                <td>Email Campaign</td>
+                                <td>654</td>
+                                <td>1,892</td>
+                            </tr>
+                            <tr>
+                                <td>Social Media</td>
+                                <td>433</td>
+                                <td>1,245</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Recent Activities</h3>
+                    <div class="list-item">
+                        <div class="list-item-title">Product page viewed</div>
+                        <div class="list-item-meta">Premium Plan • 2 minutes ago</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-title">Email campaign opened</div>
+                        <div class="list-item-meta">November Newsletter • 15 minutes ago</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-title">Demo video watched</div>
+                        <div class="list-item-meta">Product Tour • 32 minutes ago</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-title">Support article read</div>
+                        <div class="list-item-meta">Getting Started Guide • 1 hour ago</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-title">Feature comparison viewed</div>
+                        <div class="list-item-meta">Pricing Page • 2 hours ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Subscriptions Section -->
+        <div class="section">
+            <h2 class="section-title">🔄 Subscriptions</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Active Subscriptions</div>
+                    <div class="metric-value">2,847</div>
+                    <span class="metric-change positive">↑ 9.4% from last month</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Monthly Recurring Revenue</div>
+                    <div class="metric-value">$142,350</div>
+                    <span class="metric-change positive">↑ 11.2% from last month</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Churn Rate</div>
+                    <div class="metric-value">3.2%</div>
+                    <span class="metric-change positive">↓ 0.8% from last month</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Avg. Lifetime Value</div>
+                    <div class="metric-value">$1,845</div>
+                    <span class="metric-change positive">↑ 5.3% from last month</span>
+                </div>
+            </div>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <h3 class="card-title">Subscription Plans</h3>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Plan</th>
+                                <th>Subscribers</th>
+                                <th>MRR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Enterprise</td>
+                                <td>145</td>
+                                <td>$72,500</td>
+                            </tr>
+                            <tr>
+                                <td>Professional</td>
+                                <td>892</td>
+                                <td>$44,600</td>
+                            </tr>
+                            <tr>
+                                <td>Standard</td>
+                                <td>1,234</td>
+                                <td>$18,510</td>
+                            </tr>
+                            <tr>
+                                <td>Basic</td>
+                                <td>576</td>
+                                <td>$6,740</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="card">
+                    <h3 class="card-title">Recent Subscription Changes</h3>
+                    <div class="list-item">
+                        <div class="list-item-title">Acme Corp upgraded to Enterprise</div>
+                        <div class="list-item-meta">Standard → Enterprise • 1 hour ago</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-title">TechStart Inc renewed</div>
+                        <div class="list-item-meta">Professional Plan • 3 hours ago</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-title">Global Solutions cancelled</div>
+                        <div class="list-item-meta">Basic Plan • 5 hours ago</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-title">InnovateCo new subscription</div>
+                        <div class="list-item-meta">Professional Plan • 1 day ago</div>
+                    </div>
+                    <div class="list-item">
+                        <div class="list-item-title">Digital Dynamics downgraded</div>
+                        <div class="list-item-meta">Enterprise → Professional • 2 days ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deals Section -->
+        <div class="section">
+            <h2 class="section-title">💼 Deals</h2>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Active Deals</div>
+                    <div class="metric-value">156</div>
+                    <span class="metric-change positive">↑ 12 from last month</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Total Deal Value</div>
+                    <div class="metric-value">$3.2M</div>
+                    <span class="metric-change positive">↑ 23.5% from last month</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Win Rate</div>
+                    <div class="metric-value">68.5%</div>
+                    <span class="metric-change positive">↑ 4.2% from last month</span>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Avg. Deal Size</div>
+                    <div class="metric-value">$20,512</div>
+                    <span class="metric-change positive">↑ 8.9% from last month</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Top Deals by Value</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Deal Value</th>
+                            <th>Stage</th>
+                            <th>Probability</th>
+                            <th>Close Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr onclick="showDealDetails('DEAL-001')">
+                            <td>MegaCorp Industries</td>
+                            <td>$450,000</td>
+                            <td><span class="status-badge status-active">Negotiation</span></td>
+                            <td>85%</td>
+                            <td>2025-11-15</td>
+                        </tr>
+                        <tr onclick="showDealDetails('DEAL-002')">
+                            <td>Enterprise Solutions Ltd</td>
+                            <td>$320,000</td>
+                            <td><span class="status-badge status-active">Proposal</span></td>
+                            <td>70%</td>
+                            <td>2025-11-20</td>
+                        </tr>
+                        <tr onclick="showDealDetails('DEAL-003')">
+                            <td>Future Tech Group</td>
+                            <td>$280,000</td>
+                            <td><span class="status-badge status-pending">Discovery</span></td>
+                            <td>45%</td>
+                            <td>2025-12-01</td>
+                        </tr>
+                        <tr onclick="showDealDetails('DEAL-004')">
+                            <td>Alpha Innovations</td>
+                            <td>$195,000</td>
+                            <td><span class="status-badge status-active">Negotiation</span></td>
+                            <td>80%</td>
+                            <td>2025-11-18</td>
+                        </tr>
+                        <tr onclick="showDealDetails('DEAL-005')">
+                            <td>NextGen Systems</td>
+                            <td>$175,000</td>
+                            <td><span class="status-badge status-completed">Closed Won</span></td>
+                            <td>100%</td>
+                            <td>2025-11-05</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Deal Pipeline by Stage</h3>
+                <div class="chart-container">
+                    <div class="chart-wrapper">
+                        <div class="chart">
+                            <div class="bar" style="height: 45%;">
+                                <span class="bar-value">28</span>
+                            </div>
+                            <div class="bar" style="height: 65%;">
+                                <span class="bar-value">42</span>
+                            </div>
+                            <div class="bar" style="height: 80%;">
+                                <span class="bar-value">51</span>
+                            </div>
+                            <div class="bar" style="height: 55%;">
+                                <span class="bar-value">35</span>
+                            </div>
+                            <div class="bar" style="height: 100%;">
+                                <span class="bar-value">64</span>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: space-around; padding: 0 1rem;">
+                            <div class="bar-label">Lead</div>
+                            <div class="bar-label">Discovery</div>
+                            <div class="bar-label">Proposal</div>
+                            <div class="bar-label">Negotiation</div>
+                            <div class="bar-label">Closed Won</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Transaction details handler
+        function showTransactionDetails(txnId) {
+            alert(`Loading details for transaction: ${txnId}\n\nThis would typically open a modal or navigate to a detailed view.`);
+        }
+
+        // Deal details handler
+        function showDealDetails(dealId) {
+            alert(`Loading details for deal: ${dealId}\n\nThis would typically open a modal or navigate to a detailed view.`);
+        }
+
+        // Animation on scroll (optional enhancement)
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Analytics Dashboard loaded successfully');
+
+            // Simulate real-time updates (you can uncomment and customize this)
+            // setInterval(function() {
+            //     // Update metrics with live data
+            //     console.log('Updating dashboard metrics...');
+            // }, 30000); // Update every 30 seconds
+        });
+    </script>
+</body>
+</html>
