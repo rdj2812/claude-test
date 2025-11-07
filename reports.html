@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Pro - Reports</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>CRM Pro</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <span class="icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="contacts.html" class="nav-item">
+                <span class="icon">👥</span>
+                <span>Contacts</span>
+            </a>
+            <a href="deals.html" class="nav-item">
+                <span class="icon">💼</span>
+                <span>Deals</span>
+            </a>
+            <a href="tasks.html" class="nav-item">
+                <span class="icon">✓</span>
+                <span>Tasks</span>
+            </a>
+            <a href="reports.html" class="nav-item active">
+                <span class="icon">📈</span>
+                <span>Reports</span>
+            </a>
+            <a href="analytics-dashboard.html" class="nav-item">
+                <span class="icon">📉</span>
+                <span>Analytics</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Sales Manager</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>Reports & Analytics</h1>
+                <p class="subtitle">Insights and performance metrics</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary">
+                    <span>📅</span> Date Range
+                </button>
+                <button class="btn btn-primary">
+                    <span>📥</span> Export Report
+                </button>
+            </div>
+        </header>
+
+        <!-- Key Performance Indicators -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon blue">💰</div>
+                <div class="metric-content">
+                    <h3>Total Revenue</h3>
+                    <div class="metric-value">$2.4M</div>
+                    <div class="metric-change positive">↑ 18.5% YoY</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon green">📈</div>
+                <div class="metric-content">
+                    <h3>Growth Rate</h3>
+                    <div class="metric-value">23.8%</div>
+                    <div class="metric-change positive">↑ 5.2% vs Q3</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon purple">🎯</div>
+                <div class="metric-content">
+                    <h3>Target Achievement</h3>
+                    <div class="metric-value">94%</div>
+                    <div class="metric-change positive">On track</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon orange">👥</div>
+                <div class="metric-content">
+                    <h3>Customer Acquisition</h3>
+                    <div class="metric-value">234</div>
+                    <div class="metric-change positive">↑ 12.3%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="content-grid">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Monthly Revenue Trend</h2>
+                </div>
+                <div style="height: 250px; display: flex; align-items: flex-end; justify-content: space-around; padding: 1rem; border-bottom: 2px solid var(--border);">
+                    <div style="flex: 1; margin: 0 0.5rem; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 100%; background: linear-gradient(to top, #3498db, #5dade2); border-radius: 8px 8px 0 0; height: 45%; position: relative;">
+                            <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.875rem; font-weight: 600;">$185K</div>
+                        </div>
+                        <div style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-light);">Jan</div>
+                    </div>
+                    <div style="flex: 1; margin: 0 0.5rem; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 100%; background: linear-gradient(to top, #3498db, #5dade2); border-radius: 8px 8px 0 0; height: 55%; position: relative;">
+                            <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.875rem; font-weight: 600;">$210K</div>
+                        </div>
+                        <div style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-light);">Feb</div>
+                    </div>
+                    <div style="flex: 1; margin: 0 0.5rem; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 100%; background: linear-gradient(to top, #3498db, #5dade2); border-radius: 8px 8px 0 0; height: 65%; position: relative;">
+                            <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.875rem; font-weight: 600;">$245K</div>
+                        </div>
+                        <div style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-light);">Mar</div>
+                    </div>
+                    <div style="flex: 1; margin: 0 0.5rem; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 100%; background: linear-gradient(to top, #3498db, #5dade2); border-radius: 8px 8px 0 0; height: 75%; position: relative;">
+                            <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.875rem; font-weight: 600;">$280K</div>
+                        </div>
+                        <div style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-light);">Apr</div>
+                    </div>
+                    <div style="flex: 1; margin: 0 0.5rem; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 100%; background: linear-gradient(to top, #3498db, #5dade2); border-radius: 8px 8px 0 0; height: 85%; position: relative;">
+                            <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.875rem; font-weight: 600;">$315K</div>
+                        </div>
+                        <div style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-light);">May</div>
+                    </div>
+                    <div style="flex: 1; margin: 0 0.5rem; display: flex; flex-direction: column; align-items: center;">
+                        <div style="width: 100%; background: linear-gradient(to top, #3498db, #5dade2); border-radius: 8px 8px 0 0; height: 95%; position: relative;">
+                            <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 0.875rem; font-weight: 600;">$350K</div>
+                        </div>
+                        <div style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-light);">Jun</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>Revenue by Product</h2>
+                </div>
+                <div style="padding: 1rem;">
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="font-size: 0.875rem; font-weight: 500;">Enterprise Software</span>
+                            <span style="font-size: 0.875rem; font-weight: 600; color: var(--primary);">$1.2M (50%)</span>
+                        </div>
+                        <div style="width: 100%; height: 8px; background: var(--light); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 50%; height: 100%; background: linear-gradient(90deg, #3498db, #5dade2);"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="font-size: 0.875rem; font-weight: 500;">Cloud Services</span>
+                            <span style="font-size: 0.875rem; font-weight: 600; color: var(--success);">$720K (30%)</span>
+                        </div>
+                        <div style="width: 100%; height: 8px; background: var(--light); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 30%; height: 100%; background: linear-gradient(90deg, #27ae60, #2ecc71);"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="font-size: 0.875rem; font-weight: 500;">Consulting</span>
+                            <span style="font-size: 0.875rem; font-weight: 600; color: var(--warning);">$360K (15%)</span>
+                        </div>
+                        <div style="width: 100%; height: 8px; background: var(--light); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 15%; height: 100%; background: linear-gradient(90deg, #f39c12, #f1c40f);"></div>
+                        </div>
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="font-size: 0.875rem; font-weight: 500;">Other Services</span>
+                            <span style="font-size: 0.875rem; font-weight: 600; color: var(--text-light);">$120K (5%)</span>
+                        </div>
+                        <div style="width: 100%; height: 8px; background: var(--light); border-radius: 4px; overflow: hidden;">
+                            <div style="width: 5%; height: 100%; background: linear-gradient(90deg, #95a5a6, #bdc3c7);"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Performance Tables -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Top Performers</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Sales Rep</th>
+                            <th>Deals Closed</th>
+                            <th>Revenue Generated</th>
+                            <th>Win Rate</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="cell-main">Sarah Johnson</div>
+                                <div class="cell-sub">Senior Account Executive</div>
+                            </td>
+                            <td><strong>28</strong></td>
+                            <td><strong>$840,000</strong></td>
+                            <td>74%</td>
+                            <td><span class="badge badge-success">Excellent</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">Mike Davis</div>
+                                <div class="cell-sub">Account Executive</div>
+                            </td>
+                            <td><strong>24</strong></td>
+                            <td><strong>$720,000</strong></td>
+                            <td>68%</td>
+                            <td><span class="badge badge-success">Excellent</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">Emma Wilson</div>
+                                <div class="cell-sub">Account Executive</div>
+                            </td>
+                            <td><strong>21</strong></td>
+                            <td><strong>$630,000</strong></td>
+                            <td>65%</td>
+                            <td><span class="badge badge-warning">Good</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">John Doe</div>
+                                <div class="cell-sub">Sales Manager</div>
+                            </td>
+                            <td><strong>18</strong></td>
+                            <td><strong>$540,000</strong></td>
+                            <td>62%</td>
+                            <td><span class="badge badge-warning">Good</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Additional Insights -->
+        <div class="content-grid">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Key Insights</h2>
+                </div>
+                <div class="activity-feed">
+                    <div class="activity-item">
+                        <div class="activity-icon green">✓</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Revenue target exceeded</div>
+                            <div class="activity-meta">Achieved 94% of quarterly goal with 2 weeks remaining</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon blue">📊</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Best performing month</div>
+                            <div class="activity-meta">June saw $350K in revenue, a 28% increase from May</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon purple">🎯</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Win rate improvement</div>
+                            <div class="activity-meta">Overall win rate increased from 64% to 68.5%</div>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon orange">⚡</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Fastest growing segment</div>
+                            <div class="activity-meta">Cloud Services revenue up 45% year-over-year</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <h2>Action Items</h2>
+                </div>
+                <div class="task-list">
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Review underperforming deals</div>
+                            <div class="task-meta">
+                                <span class="badge badge-sm badge-warning">Medium</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Schedule Q4 planning meeting</div>
+                            <div class="task-meta">
+                                <span class="badge badge-sm badge-danger">High</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Update sales forecasts</div>
+                            <div class="task-meta">
+                                <span class="badge badge-sm badge-warning">Medium</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Analyze customer churn data</div>
+                            <div class="task-meta">
+                                <span class="badge badge-sm badge-info">Low</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

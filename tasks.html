@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Pro - Tasks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>CRM Pro</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <span class="icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="contacts.html" class="nav-item">
+                <span class="icon">👥</span>
+                <span>Contacts</span>
+            </a>
+            <a href="deals.html" class="nav-item">
+                <span class="icon">💼</span>
+                <span>Deals</span>
+            </a>
+            <a href="tasks.html" class="nav-item active">
+                <span class="icon">✓</span>
+                <span>Tasks</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <span class="icon">📈</span>
+                <span>Reports</span>
+            </a>
+            <a href="analytics-dashboard.html" class="nav-item">
+                <span class="icon">📉</span>
+                <span>Analytics</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Sales Manager</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>Tasks & Activities</h1>
+                <p class="subtitle">Stay organized and productive</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary">
+                    <span>📅</span> Calendar
+                </button>
+                <button class="btn btn-primary">
+                    <span>+</span> New Task
+                </button>
+            </div>
+        </header>
+
+        <!-- Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon orange">⏰</div>
+                <div class="metric-content">
+                    <h3>Due Today</h3>
+                    <div class="metric-value">12</div>
+                    <div class="metric-change">4 completed</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon blue">📋</div>
+                <div class="metric-content">
+                    <h3>Active Tasks</h3>
+                    <div class="metric-value">47</div>
+                    <div class="metric-change positive">↑ 8 this week</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon green">✓</div>
+                <div class="metric-content">
+                    <h3>Completed</h3>
+                    <div class="metric-value">156</div>
+                    <div class="metric-change">This month</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon purple">🔥</div>
+                <div class="metric-content">
+                    <h3>High Priority</h3>
+                    <div class="metric-value">8</div>
+                    <div class="metric-change">Needs attention</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tasks Grid -->
+        <div class="content-grid">
+            <!-- High Priority -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>🔥 High Priority</h2>
+                </div>
+                <div class="task-list">
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Follow up with MegaCorp Industries</div>
+                            <div class="task-meta">
+                                <span class="task-time">⏰ 10:00 AM</span>
+                                <span class="badge badge-sm badge-danger">Urgent</span>
+                                <span style="font-size: 0.875rem; color: var(--text-light);">💼 Deal worth $450K</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Prepare proposal for Enterprise Solutions</div>
+                            <div class="task-meta">
+                                <span class="task-time">⏰ 2:00 PM</span>
+                                <span class="badge badge-sm badge-danger">High</span>
+                                <span style="font-size: 0.875rem; color: var(--text-light);">📧 Email & presentation</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Contract review for Alpha Innovations</div>
+                            <div class="task-meta">
+                                <span class="task-time">⏰ 4:00 PM</span>
+                                <span class="badge badge-sm badge-danger">High</span>
+                                <span style="font-size: 0.875rem; color: var(--text-light);">📄 Legal review needed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Today's Tasks -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>📅 Today</h2>
+                </div>
+                <div class="task-list">
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox" checked>
+                        <div class="task-content">
+                            <div class="task-title">Team standup meeting</div>
+                            <div class="task-meta">
+                                <span class="task-time">⏰ 9:00 AM</span>
+                                <span class="badge badge-sm badge-success">Done</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Update CRM records</div>
+                            <div class="task-meta">
+                                <span class="task-time">⏰ 11:30 AM</span>
+                                <span class="badge badge-sm badge-warning">Medium</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Call with TechStart Inc</div>
+                            <div class="task-meta">
+                                <span class="task-time">⏰ 3:00 PM</span>
+                                <span class="badge badge-sm badge-warning">Medium</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Review Q4 sales report</div>
+                            <div class="task-meta">
+                                <span class="task-time">⏰ 5:00 PM</span>
+                                <span class="badge badge-sm badge-info">Low</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- This Week -->
+        <div class="card">
+            <div class="card-header">
+                <h2>📆 This Week</h2>
+            </div>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>Related To</th>
+                            <th>Due Date</th>
+                            <th>Priority</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="cell-main">Send quote to Global Solutions</div>
+                                <div class="cell-sub">Quote for consulting package</div>
+                            </td>
+                            <td>💼 Global Solutions</td>
+                            <td>Nov 8, 2025</td>
+                            <td><span class="badge badge-warning">Medium</span></td>
+                            <td><span class="badge badge-info">In Progress</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">Discovery call with Future Tech</div>
+                                <div class="cell-sub">Initial consultation meeting</div>
+                            </td>
+                            <td>💼 Future Tech Group</td>
+                            <td>Nov 9, 2025</td>
+                            <td><span class="badge badge-warning">Medium</span></td>
+                            <td><span class="badge badge-info">Scheduled</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">Product demo for InnovateCo</div>
+                                <div class="cell-sub">Marketing automation demo</div>
+                            </td>
+                            <td>💼 InnovateCo</td>
+                            <td>Nov 10, 2025</td>
+                            <td><span class="badge badge-danger">High</span></td>
+                            <td><span class="badge badge-info">Scheduled</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">Follow-up email to NextGen</div>
+                                <div class="cell-sub">Post-sale check-in</div>
+                            </td>
+                            <td>👤 NextGen Systems</td>
+                            <td>Nov 11, 2025</td>
+                            <td><span class="badge badge-info">Low</span></td>
+                            <td><span class="badge badge-warning">Pending</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">Quarterly business review</div>
+                                <div class="cell-sub">Internal team meeting</div>
+                            </td>
+                            <td>👥 Sales Team</td>
+                            <td>Nov 12, 2025</td>
+                            <td><span class="badge badge-warning">Medium</span></td>
+                            <td><span class="badge badge-info">Scheduled</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Pro - Contacts</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>CRM Pro</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <span class="icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="contacts.html" class="nav-item active">
+                <span class="icon">👥</span>
+                <span>Contacts</span>
+            </a>
+            <a href="deals.html" class="nav-item">
+                <span class="icon">💼</span>
+                <span>Deals</span>
+            </a>
+            <a href="tasks.html" class="nav-item">
+                <span class="icon">✓</span>
+                <span>Tasks</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <span class="icon">📈</span>
+                <span>Reports</span>
+            </a>
+            <a href="analytics-dashboard.html" class="nav-item">
+                <span class="icon">📉</span>
+                <span>Analytics</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Sales Manager</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>Contacts</h1>
+                <p class="subtitle">Manage your customer relationships</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary">
+                    <span>📥</span> Import
+                </button>
+                <button class="btn btn-primary">
+                    <span>+</span> New Contact
+                </button>
+            </div>
+        </header>
+
+        <!-- Stats -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon blue">👥</div>
+                <div class="metric-content">
+                    <h3>Total Contacts</h3>
+                    <div class="metric-value">1,234</div>
+                    <div class="metric-change positive">↑ 52 this month</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon green">✓</div>
+                <div class="metric-content">
+                    <h3>Active</h3>
+                    <div class="metric-value">892</div>
+                    <div class="metric-change positive">↑ 8.3%</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon orange">⏰</div>
+                <div class="metric-content">
+                    <h3>Follow-ups Due</h3>
+                    <div class="metric-value">34</div>
+                    <div class="metric-change">Today</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon purple">⭐</div>
+                <div class="metric-content">
+                    <h3>VIP Contacts</h3>
+                    <div class="metric-value">87</div>
+                    <div class="metric-change positive">↑ 5</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contacts Grid -->
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-avatar">JS</div>
+                <div class="contact-name">John Smith</div>
+                <div class="contact-role">CEO at TechCorp</div>
+                <div class="contact-details">
+                    <div class="contact-detail">📧 john.smith@techcorp.com</div>
+                    <div class="contact-detail">📞 +1 (555) 123-4567</div>
+                    <div class="contact-detail">📍 San Francisco, CA</div>
+                </div>
+                <span class="badge badge-success">Active</span>
+                <div class="contact-actions" style="margin-top: 1rem;">
+                    <button class="icon-btn" title="Email">✉️</button>
+                    <button class="icon-btn" title="Call">📞</button>
+                    <button class="icon-btn" title="Message">💬</button>
+                    <button class="icon-btn" title="More">⋯</button>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-avatar" style="background: linear-gradient(135deg, #e74c3c, #c0392b);">SJ</div>
+                <div class="contact-name">Sarah Johnson</div>
+                <div class="contact-role">CTO at InnovateLabs</div>
+                <div class="contact-details">
+                    <div class="contact-detail">📧 sarah.j@innovatelabs.io</div>
+                    <div class="contact-detail">📞 +1 (555) 234-5678</div>
+                    <div class="contact-detail">📍 New York, NY</div>
+                </div>
+                <span class="badge badge-success">Active</span>
+                <div class="contact-actions" style="margin-top: 1rem;">
+                    <button class="icon-btn" title="Email">✉️</button>
+                    <button class="icon-btn" title="Call">📞</button>
+                    <button class="icon-btn" title="Message">💬</button>
+                    <button class="icon-btn" title="More">⋯</button>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-avatar" style="background: linear-gradient(135deg, #9b59b6, #8e44ad);">MD</div>
+                <div class="contact-name">Mike Davis</div>
+                <div class="contact-role">VP Sales at GlobalCorp</div>
+                <div class="contact-details">
+                    <div class="contact-detail">📧 m.davis@globalcorp.com</div>
+                    <div class="contact-detail">📞 +1 (555) 345-6789</div>
+                    <div class="contact-detail">📍 Austin, TX</div>
+                </div>
+                <span class="badge badge-warning">Pending</span>
+                <div class="contact-actions" style="margin-top: 1rem;">
+                    <button class="icon-btn" title="Email">✉️</button>
+                    <button class="icon-btn" title="Call">📞</button>
+                    <button class="icon-btn" title="Message">💬</button>
+                    <button class="icon-btn" title="More">⋯</button>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-avatar" style="background: linear-gradient(135deg, #f39c12, #d68910);">EW</div>
+                <div class="contact-name">Emily Wilson</div>
+                <div class="contact-role">Marketing Director at BrandCo</div>
+                <div class="contact-details">
+                    <div class="contact-detail">📧 emily.w@brandco.com</div>
+                    <div class="contact-detail">📞 +1 (555) 456-7890</div>
+                    <div class="contact-detail">📍 Los Angeles, CA</div>
+                </div>
+                <span class="badge badge-success">Active</span>
+                <div class="contact-actions" style="margin-top: 1rem;">
+                    <button class="icon-btn" title="Email">✉️</button>
+                    <button class="icon-btn" title="Call">📞</button>
+                    <button class="icon-btn" title="Message">💬</button>
+                    <button class="icon-btn" title="More">⋯</button>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-avatar" style="background: linear-gradient(135deg, #1abc9c, #16a085);">RB</div>
+                <div class="contact-name">Robert Brown</div>
+                <div class="contact-role">Founder at StartupXYZ</div>
+                <div class="contact-details">
+                    <div class="contact-detail">📧 rob@startupxyz.com</div>
+                    <div class="contact-detail">📞 +1 (555) 567-8901</div>
+                    <div class="contact-detail">📍 Seattle, WA</div>
+                </div>
+                <span class="badge badge-info">New</span>
+                <div class="contact-actions" style="margin-top: 1rem;">
+                    <button class="icon-btn" title="Email">✉️</button>
+                    <button class="icon-btn" title="Call">📞</button>
+                    <button class="icon-btn" title="Message">💬</button>
+                    <button class="icon-btn" title="More">⋯</button>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-avatar" style="background: linear-gradient(135deg, #e67e22, #d35400);">LT</div>
+                <div class="contact-name">Lisa Thompson</div>
+                <div class="contact-role">COO at MegaCorp</div>
+                <div class="contact-details">
+                    <div class="contact-detail">📧 l.thompson@megacorp.com</div>
+                    <div class="contact-detail">📞 +1 (555) 678-9012</div>
+                    <div class="contact-detail">📍 Chicago, IL</div>
+                </div>
+                <span class="badge badge-success">Active</span>
+                <div class="contact-actions" style="margin-top: 1rem;">
+                    <button class="icon-btn" title="Email">✉️</button>
+                    <button class="icon-btn" title="Call">📞</button>
+                    <button class="icon-btn" title="Message">💬</button>
+                    <button class="icon-btn" title="More">⋯</button>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-avatar" style="background: linear-gradient(135deg, #2ecc71, #27ae60);">DM</div>
+                <div class="contact-name">David Martinez</div>
+                <div class="contact-role">Product Manager at TechFlow</div>
+                <div class="contact-details">
+                    <div class="contact-detail">📧 d.martinez@techflow.io</div>
+                    <div class="contact-detail">📞 +1 (555) 789-0123</div>
+                    <div class="contact-detail">📍 Denver, CO</div>
+                </div>
+                <span class="badge badge-success">Active</span>
+                <div class="contact-actions" style="margin-top: 1rem;">
+                    <button class="icon-btn" title="Email">✉️</button>
+                    <button class="icon-btn" title="Call">📞</button>
+                    <button class="icon-btn" title="Message">💬</button>
+                    <button class="icon-btn" title="More">⋯</button>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <div class="contact-avatar" style="background: linear-gradient(135deg, #34495e, #2c3e50);">AG</div>
+                <div class="contact-name">Amanda Garcia</div>
+                <div class="contact-role">CFO at FinanceGroup</div>
+                <div class="contact-details">
+                    <div class="contact-detail">📧 a.garcia@financegroup.com</div>
+                    <div class="contact-detail">📞 +1 (555) 890-1234</div>
+                    <div class="contact-detail">📍 Boston, MA</div>
+                </div>
+                <span class="badge badge-warning">Pending</span>
+                <div class="contact-actions" style="margin-top: 1rem;">
+                    <button class="icon-btn" title="Email">✉️</button>
+                    <button class="icon-btn" title="Call">📞</button>
+                    <button class="icon-btn" title="Message">💬</button>
+                    <button class="icon-btn" title="More">⋯</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

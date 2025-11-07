@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Pro - Deals Pipeline</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>CRM Pro</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item">
+                <span class="icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="contacts.html" class="nav-item">
+                <span class="icon">👥</span>
+                <span>Contacts</span>
+            </a>
+            <a href="deals.html" class="nav-item active">
+                <span class="icon">💼</span>
+                <span>Deals</span>
+            </a>
+            <a href="tasks.html" class="nav-item">
+                <span class="icon">✓</span>
+                <span>Tasks</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <span class="icon">📈</span>
+                <span>Reports</span>
+            </a>
+            <a href="analytics-dashboard.html" class="nav-item">
+                <span class="icon">📉</span>
+                <span>Analytics</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Sales Manager</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>Deals Pipeline</h1>
+                <p class="subtitle">Track and manage your sales opportunities</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary">
+                    <span>🔍</span> Filter
+                </button>
+                <button class="btn btn-primary">
+                    <span>+</span> New Deal
+                </button>
+            </div>
+        </header>
+
+        <!-- Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon blue">💼</div>
+                <div class="metric-content">
+                    <h3>Active Deals</h3>
+                    <div class="metric-value">156</div>
+                    <div class="metric-change positive">↑ 12 this month</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon green">💰</div>
+                <div class="metric-content">
+                    <h3>Total Value</h3>
+                    <div class="metric-value">$3.2M</div>
+                    <div class="metric-change positive">↑ 23.5%</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon purple">🎯</div>
+                <div class="metric-content">
+                    <h3>Win Rate</h3>
+                    <div class="metric-value">68.5%</div>
+                    <div class="metric-change positive">↑ 4.2%</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon orange">📊</div>
+                <div class="metric-content">
+                    <h3>Avg Deal Size</h3>
+                    <div class="metric-value">$20.5K</div>
+                    <div class="metric-change positive">↑ 8.9%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deals Table -->
+        <div class="card">
+            <div class="card-header">
+                <h2>All Deals</h2>
+                <div class="header-actions">
+                    <button class="btn btn-secondary btn-sm">Export</button>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Company</th>
+                            <th>Deal Value</th>
+                            <th>Stage</th>
+                            <th>Probability</th>
+                            <th>Owner</th>
+                            <th>Close Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="cell-main">MegaCorp Industries</div>
+                                <div class="cell-sub">Enterprise Software License</div>
+                            </td>
+                            <td><strong>$450,000</strong></td>
+                            <td><span class="badge badge-success">Negotiation</span></td>
+                            <td>85%</td>
+                            <td>Sarah J.</td>
+                            <td>Nov 15, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">Enterprise Solutions Ltd</div>
+                                <div class="cell-sub">Cloud Migration Services</div>
+                            </td>
+                            <td><strong>$320,000</strong></td>
+                            <td><span class="badge badge-warning">Proposal</span></td>
+                            <td>70%</td>
+                            <td>Mike D.</td>
+                            <td>Nov 20, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">Future Tech Group</div>
+                                <div class="cell-sub">Digital Transformation</div>
+                            </td>
+                            <td><strong>$280,000</strong></td>
+                            <td><span class="badge badge-info">Discovery</span></td>
+                            <td>45%</td>
+                            <td>Emma W.</td>
+                            <td>Dec 1, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">Alpha Innovations</div>
+                                <div class="cell-sub">SaaS Platform Implementation</div>
+                            </td>
+                            <td><strong>$195,000</strong></td>
+                            <td><span class="badge badge-success">Negotiation</span></td>
+                            <td>80%</td>
+                            <td>John D.</td>
+                            <td>Nov 18, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">NextGen Systems</div>
+                                <div class="cell-sub">Infrastructure Upgrade</div>
+                            </td>
+                            <td><strong>$175,000</strong></td>
+                            <td><span class="badge badge-success">Closed Won</span></td>
+                            <td>100%</td>
+                            <td>Sarah J.</td>
+                            <td>Nov 5, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">TechStart Inc</div>
+                                <div class="cell-sub">Development Services</div>
+                            </td>
+                            <td><strong>$145,000</strong></td>
+                            <td><span class="badge badge-warning">Proposal</span></td>
+                            <td>65%</td>
+                            <td>Mike D.</td>
+                            <td>Nov 25, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">Global Solutions</div>
+                                <div class="cell-sub">Consulting Package</div>
+                            </td>
+                            <td><strong>$120,000</strong></td>
+                            <td><span class="badge badge-info">Discovery</span></td>
+                            <td>40%</td>
+                            <td>Emma W.</td>
+                            <td>Dec 10, 2025</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="cell-main">InnovateCo</div>
+                                <div class="cell-sub">Marketing Automation</div>
+                            </td>
+                            <td><strong>$95,000</strong></td>
+                            <td><span class="badge badge-success">Negotiation</span></td>
+                            <td>75%</td>
+                            <td>John D.</td>
+                            <td>Nov 22, 2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Pipeline Overview -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Pipeline by Stage</h2>
+            </div>
+            <div style="padding: 1rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
+                <div style="text-align: center; padding: 1.5rem; background: var(--bg); border-radius: 8px;">
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">28</div>
+                    <div style="color: var(--text-light); font-size: 0.875rem;">Lead</div>
+                    <div style="font-size: 0.875rem; margin-top: 0.5rem; color: var(--text);">$560K</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: var(--bg); border-radius: 8px;">
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--info); margin-bottom: 0.5rem;">42</div>
+                    <div style="color: var(--text-light); font-size: 0.875rem;">Discovery</div>
+                    <div style="font-size: 0.875rem; margin-top: 0.5rem; color: var(--text);">$840K</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: var(--bg); border-radius: 8px;">
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--warning); margin-bottom: 0.5rem;">51</div>
+                    <div style="color: var(--text-light); font-size: 0.875rem;">Proposal</div>
+                    <div style="font-size: 0.875rem; margin-top: 0.5rem; color: var(--text);">$1.02M</div>
+                </div>
+                <div style="text-align: center; padding: 1.5rem; background: var(--bg); border-radius: 8px;">
+                    <div style="font-size: 2rem; font-weight: 700; color: var(--success); margin-bottom: 0.5rem;">35</div>
+                    <div style="color: var(--text-light); font-size: 0.875rem;">Negotiation</div>
+                    <div style="font-size: 0.875rem; margin-top: 0.5rem; color: var(--text);">$700K</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
