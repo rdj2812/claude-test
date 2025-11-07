@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM Pro - Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>CRM Pro</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="nav-item active">
+                <span class="icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="contacts.html" class="nav-item">
+                <span class="icon">👥</span>
+                <span>Contacts</span>
+            </a>
+            <a href="deals.html" class="nav-item">
+                <span class="icon">💼</span>
+                <span>Deals</span>
+            </a>
+            <a href="tasks.html" class="nav-item">
+                <span class="icon">✓</span>
+                <span>Tasks</span>
+            </a>
+            <a href="reports.html" class="nav-item">
+                <span class="icon">📈</span>
+                <span>Reports</span>
+            </a>
+            <a href="analytics-dashboard.html" class="nav-item">
+                <span class="icon">📉</span>
+                <span>Analytics</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-profile">
+                <div class="avatar">JD</div>
+                <div class="user-info">
+                    <div class="user-name">John Doe</div>
+                    <div class="user-role">Sales Manager</div>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="page-header">
+            <div>
+                <h1>Dashboard</h1>
+                <p class="subtitle">Welcome back! Here's what's happening today.</p>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-secondary">
+                    <span>📅</span> Today
+                </button>
+                <button class="btn btn-primary">
+                    <span>+</span> New Deal
+                </button>
+            </div>
+        </header>
+
+        <!-- Key Metrics -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-icon blue">💰</div>
+                <div class="metric-content">
+                    <h3>Total Revenue</h3>
+                    <div class="metric-value">$284,550</div>
+                    <div class="metric-change positive">↑ 12.5%</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon green">👥</div>
+                <div class="metric-content">
+                    <h3>Active Contacts</h3>
+                    <div class="metric-value">1,234</div>
+                    <div class="metric-change positive">↑ 8.3%</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon purple">💼</div>
+                <div class="metric-content">
+                    <h3>Open Deals</h3>
+                    <div class="metric-value">87</div>
+                    <div class="metric-change positive">↑ 5%</div>
+                </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-icon orange">📈</div>
+                <div class="metric-content">
+                    <h3>Conversion Rate</h3>
+                    <div class="metric-value">68.5%</div>
+                    <div class="metric-change positive">↑ 4.2%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Recent Deals -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Recent Deals</h2>
+                    <a href="deals.html" class="link">View All →</a>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Company</th>
+                                <th>Value</th>
+                                <th>Stage</th>
+                                <th>Owner</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="cell-main">MegaCorp Industries</div>
+                                    <div class="cell-sub">Enterprise Software</div>
+                                </td>
+                                <td><strong>$450,000</strong></td>
+                                <td><span class="badge badge-success">Negotiation</span></td>
+                                <td>Sarah J.</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="cell-main">Tech Solutions Ltd</div>
+                                    <div class="cell-sub">Cloud Services</div>
+                                </td>
+                                <td><strong>$320,000</strong></td>
+                                <td><span class="badge badge-warning">Proposal</span></td>
+                                <td>Mike D.</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="cell-main">Future Group</div>
+                                    <div class="cell-sub">Consulting</div>
+                                </td>
+                                <td><strong>$280,000</strong></td>
+                                <td><span class="badge badge-info">Discovery</span></td>
+                                <td>Emma W.</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="cell-main">Alpha Innovations</div>
+                                    <div class="cell-sub">SaaS Platform</div>
+                                </td>
+                                <td><strong>$195,000</strong></td>
+                                <td><span class="badge badge-success">Negotiation</span></td>
+                                <td>John D.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Upcoming Tasks -->
+            <div class="card">
+                <div class="card-header">
+                    <h2>Today's Tasks</h2>
+                    <a href="tasks.html" class="link">View All →</a>
+                </div>
+                <div class="task-list">
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Follow up with MegaCorp</div>
+                            <div class="task-meta">
+                                <span class="task-time">10:00 AM</span>
+                                <span class="badge badge-sm badge-danger">High Priority</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Prepare proposal for Tech Solutions</div>
+                            <div class="task-meta">
+                                <span class="task-time">2:00 PM</span>
+                                <span class="badge badge-sm badge-warning">Medium</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox" checked>
+                        <div class="task-content">
+                            <div class="task-title">Team standup meeting</div>
+                            <div class="task-meta">
+                                <span class="task-time">9:00 AM</span>
+                                <span class="badge badge-sm badge-success">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Review Q4 sales report</div>
+                            <div class="task-meta">
+                                <span class="task-time">4:00 PM</span>
+                                <span class="badge badge-sm badge-info">Low</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <input type="checkbox" class="task-checkbox">
+                        <div class="task-content">
+                            <div class="task-title">Update CRM records</div>
+                            <div class="task-meta">
+                                <span class="task-time">5:30 PM</span>
+                                <span class="badge badge-sm badge-info">Low</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Activity Feed -->
+        <div class="card">
+            <div class="card-header">
+                <h2>Recent Activity</h2>
+            </div>
+            <div class="activity-feed">
+                <div class="activity-item">
+                    <div class="activity-icon blue">💼</div>
+                    <div class="activity-content">
+                        <div class="activity-title"><strong>Sarah Johnson</strong> closed a deal</div>
+                        <div class="activity-meta">NextGen Systems - $175,000 • 2 hours ago</div>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon green">👤</div>
+                    <div class="activity-content">
+                        <div class="activity-title"><strong>New contact</strong> added</div>
+                        <div class="activity-meta">Emma Wilson from Acme Corp • 3 hours ago</div>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon purple">📧</div>
+                    <div class="activity-content">
+                        <div class="activity-title"><strong>Mike Davis</strong> sent proposal</div>
+                        <div class="activity-meta">Enterprise Solutions Ltd • 5 hours ago</div>
+                    </div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-icon orange">📞</div>
+                    <div class="activity-content">
+                        <div class="activity-title"><strong>John Doe</strong> completed call</div>
+                        <div class="activity-meta">Follow-up with MegaCorp • 6 hours ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
